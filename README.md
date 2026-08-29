@@ -44,11 +44,12 @@ PowerShell 输出的 `Hash` 应与校验文件中对应 `Setup.exe` 的值完全
 
 ## macOS：安装
 
-下载 DMG 或 ZIP 后打开它，将 `LabFlow.app` 拖入“应用程序”文件夹。本测试版尚未经过 Apple Developer ID 签名与公证；若首次启动被 macOS 拦截：
+下载 DMG 或 ZIP 后打开它，将 `LabFlow.app` 拖入“应用程序”文件夹。本测试版尚未经过 Apple Developer ID 签名与公证；请先尝试打开一次。若 macOS 拦截：
 
-1. 在“应用程序”文件夹中找到 `LabFlow.app`。
-2. 按住 Control 点击 App，选择“打开”。
-3. 在弹出的确认窗口中再次选择“打开”。
+1. 打开“系统设置”→“隐私与安全性”。
+2. 滚动到“安全性”区域，找到 `LabFlow was blocked to protect your Mac`。
+3. 点击右侧“仍要打开”（Open Anyway）。
+4. 在弹出的确认窗口中点击“打开”。
 
 ### 可选：验证下载文件
 
