@@ -20,42 +20,46 @@ LabFlow 是一个面向生物医学湿实验的 local-first 实验管理与电�
 
 [Release 页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.1) 包含完整的更新记录、SHA-256 值和安装说明。当前没有 Intel Mac 安装包。
 
-## Windows：校验后安装
+## Windows：安装
 
-本 MVP 暂未配置 Windows Authenticode 代码签名。安装前请将 `Setup.exe` 和 `SHA256SUMS-Windows-x64.txt` 放在同一目录，在 PowerShell 执行：
+普通用户下载 `Setup.exe` 后直接双击安装即可。本 MVP 暂未配置 Windows Authenticode 代码签名，因此首次安装时可能出现“Windows 已保护你的电脑”。
+
+1. 确认安装包来自本官方 Release。
+2. 点击“更多信息”。
+3. 确认应用名称为 `LabFlow`，再点击“仍要运行”。
+4. 按安装向导完成安装。
+
+学校、医院或企业电脑可能禁止运行未签名程序。请遵守组织安全策略并联系 IT 管理员，不要尝试绕过管理控制。
+
+### 可选：验证下载文件
+
+如希望确认安装包与官方发布版本完全一致，可额外下载 `SHA256SUMS-Windows-x64.txt`，与 `Setup.exe` 放在同一目录后，在 PowerShell 执行：
 
 ```powershell
 Get-FileHash -Algorithm SHA256 .\LabFlow-0.1.1-Windows-x64-Setup.exe
 Get-Content .\SHA256SUMS-Windows-x64.txt
 ```
 
-两处 Hash 必须完全一致。不一致时不要运行安装包，请从本仓库 Release 重新下载。
+PowerShell 输出的 `Hash` 应与校验文件中对应 `Setup.exe` 的值完全一致；不一致时不要运行安装包，请从本仓库 Release 重新下载。跳过此步骤不会影响安装。
 
-如果 Windows 显示“Windows 已保护你的电脑”：
+## macOS：安装
 
-1. 确认 SHA-256 已匹配，且文件来自本官方 Release。
-2. 点击“更多信息”。
-3. 确认应用名称为 `LabFlow`。
-4. 点击“仍要运行”，按向导完成安装。
+下载 DMG 或 ZIP 后打开它，将 `LabFlow.app` 拖入“应用程序”文件夹。本测试版尚未经过 Apple Developer ID 签名与公证；若首次启动被 macOS 拦截：
 
-学校、医院或企业电脑可能禁止运行未签名程序。请遵守组织安全策略并联系 IT 管理员，不要尝试绕过管理控制。
+1. 在“应用程序”文件夹中找到 `LabFlow.app`。
+2. 按住 Control 点击 App，选择“打开”。
+3. 在弹出的确认窗口中再次选择“打开”。
 
-## macOS：首次启动
+### 可选：验证下载文件
 
-先将下载的 DMG 或 ZIP 与 `SHA256SUMS.txt` 放在同一目录。以 ZIP 为例，在终端执行：
+如希望确认安装包与官方发布版本完全一致，可下载 `SHA256SUMS.txt` 并与 DMG 或 ZIP 放在同一目录。以 ZIP 为例，在终端分别执行：
 
 ```bash
 shasum -a 256 LabFlow-0.1.1-Apple-Silicon.zip
 cat SHA256SUMS.txt
 ```
 
-第一条命令输出的 Hash 必须与校验文件中对应 ZIP 的值完全一致。如果下载的是 DMG，将第一条命令的文件名换成 DMG 文件名。
-
-当前 macOS 测试版尚未经过 Apple Developer ID 签名与公证。校验通过后，如果系统拦截首次启动：
-
-1. 在“应用程序”文件夹中找到 `LabFlow.app`。
-2. 按住 Control 点击 App，选择“打开”。
-3. 在弹出的确认窗口中再次选择“打开”。
+第一条命令输出的 Hash 应与校验文件中对应 ZIP 的值完全一致。如果下载的是 DMG，将第一条命令的文件名换成 DMG 文件名。跳过此步骤不会影响安装。
 
 ## 本地数据
 
