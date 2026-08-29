@@ -42,7 +42,16 @@ Get-Content .\SHA256SUMS-Windows-x64.txt
 
 ## macOS：首次启动
 
-当前 macOS 测试版尚未经过 Apple Developer ID 签名与公证。如果系统拦截首次启动：
+先将下载的 DMG 或 ZIP 与 `SHA256SUMS.txt` 放在同一目录。以 ZIP 为例，在终端执行：
+
+```bash
+shasum -a 256 LabFlow-0.1.1-Apple-Silicon.zip
+cat SHA256SUMS.txt
+```
+
+第一条命令输出的 Hash 必须与校验文件中对应 ZIP 的值完全一致。如果下载的是 DMG，将第一条命令的文件名换成 DMG 文件名。
+
+当前 macOS 测试版尚未经过 Apple Developer ID 签名与公证。校验通过后，如果系统拦截首次启动：
 
 1. 在“应用程序”文件夹中找到 `LabFlow.app`。
 2. 按住 Control 点击 App，选择“打开”。
