@@ -4,25 +4,27 @@ LabFlow 是一个面向生物医学湿实验的 local-first 实验管理与电�
 
 ## 下载最新版
 
-当前版本：**LabFlow 0.1.2 — Record 图片与低内存 PDF**
+当前版本：**LabFlow 0.1.3 — Sample Flow 与细胞刺激修复**
 
-所有 Record 可插入图片；大图/TIFF 自动生成预览、原图保留。新增逐页写盘、支持进度与取消的“低内存 PDF”（图像式，文字不可复制）。原系统打印最多支持 8 个正文图片引用，更多图片请使用低内存模式。
+本次更新完善了自建 Protocol 的多 Sample 流程：可选择多个 Sample 使用相同条件，或按条件、剂量、时间和数量分组，并可选映射孔板位置。内置“细胞加刺激”现在要求同一条 Record 的输入 Sample 类型一致，Record 只显示实际使用的刺激设置；CELL、DISH、WELL 以原 Sample 身份登记为输出，PLATE 按分组生成 WELL。
 
-升级前请先通过旧版“数据管理”导出完整工作区备份，再退出旧版并安装新版。
+Record 图片插入、原图保留、低内存 PDF 和系统打印等 0.1.2 功能继续保留。
+
+升级前请先通过旧版“数据管理”导出完整工作区备份，再退出旧版并安装新版。历史 Record 保存既有 Protocol snapshot，不会被新版模板改写。
 
 ### Windows 10/11 x64
 
-- [下载 Setup.exe（普通用户推荐）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/LabFlow-0.1.2-Windows-x64-Setup.exe)
-- [下载 MSI（管理部署）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/LabFlow-0.1.2-Windows-x64.msi)
-- [Windows SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/SHA256SUMS-Windows-x64.txt)
+- [下载 Setup.exe（普通用户推荐）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/LabFlow-0.1.3-Windows-x64-Setup.exe)
+- [下载 MSI（管理部署）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/LabFlow-0.1.3-Windows-x64.msi)
+- [Windows SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/SHA256SUMS-Windows-x64.txt)
 
 ### Apple Silicon macOS 12+
 
-- [下载 DMG](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/LabFlow-0.1.2-Apple-Silicon.dmg)
-- [下载 ZIP](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/LabFlow-0.1.2-Apple-Silicon.zip)
-- [macOS SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.2/SHA256SUMS.txt)
+- [下载 DMG](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/LabFlow-0.1.3-Apple-Silicon.dmg)
+- [下载 ZIP](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/LabFlow-0.1.3-Apple-Silicon.zip)
+- [macOS SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.3/SHA256SUMS.txt)
 
-[Release 页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.2) 包含完整的更新记录、SHA-256 值和安装说明。当前没有 Intel Mac 安装包。
+[v0.1.3 Release 页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.3) 包含完整更新记录和安装说明。当前没有 Intel Mac 安装包。
 
 ## Windows：安装
 
@@ -37,10 +39,10 @@ LabFlow 是一个面向生物医学湿实验的 local-first 实验管理与电�
 
 ### 可选：验证下载文件
 
-如希望确认安装包与官方发布版本完全一致，可额外下载 `SHA256SUMS-Windows-x64.txt`，与 `Setup.exe` 放在同一目录后，在 PowerShell 执行：
+如希望确认安装包与官方发布版本完全一致，可额外下载 `SHA256SUMS-Windows-x64.txt`，与 `Setup.exe` 放在同一目录后，在 PowerShell 分别执行：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\LabFlow-0.1.2-Windows-x64-Setup.exe
+Get-FileHash -Algorithm SHA256 .\LabFlow-0.1.3-Windows-x64-Setup.exe
 Get-Content .\SHA256SUMS-Windows-x64.txt
 ```
 
@@ -48,7 +50,7 @@ PowerShell 输出的 `Hash` 应与校验文件中对应 `Setup.exe` 的值完全
 
 ## macOS：安装
 
-下载 DMG 或 ZIP 后打开它，将 `LabFlow.app` 拖入“应用程序”文件夹。本测试版尚未经过 Apple Developer ID 签名与公证；请先尝试打开一次。若 macOS 拦截：
+下载 DMG 或 ZIP 后打开它，将 `LabFlow.app` 拖入“应用程序”文件夹。本测试版使用 ad-hoc 本地签名，尚未经过 Apple Developer ID 签名与公证。请先尝试打开一次；如果 macOS 拦截：
 
 1. 打开“系统设置”→“隐私与安全性”。
 2. 滚动到“安全性”区域，找到 `LabFlow was blocked to protect your Mac`。
@@ -60,7 +62,7 @@ PowerShell 输出的 `Hash` 应与校验文件中对应 `Setup.exe` 的值完全
 如希望确认安装包与官方发布版本完全一致，可下载 `SHA256SUMS.txt` 并与 DMG 或 ZIP 放在同一目录。以 ZIP 为例，在终端分别执行：
 
 ```bash
-shasum -a 256 LabFlow-0.1.2-Apple-Silicon.zip
+shasum -a 256 LabFlow-0.1.3-Apple-Silicon.zip
 cat SHA256SUMS.txt
 ```
 
