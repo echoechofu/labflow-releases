@@ -1,5 +1,14 @@
 # LabFlow Changelog
 
+## 0.1.3 — 2026-09-04
+
+- 自建 Protocol 的“产生多个 Sample”支持相同条件与按条件分组两种模式。
+- 条件分配可记录条件、剂量、处理时间和数量，并可选顺序映射孔板位置；Sample 类型与孔位互不绑定。
+- 重做 Protocol 创建器中多 Sample 关系的说明、选项和预览。
+- 内置“细胞加刺激”支持多个同类型输入，并禁止在同一条 Record 中混选 CELL、PLATE、DISH、WELL。
+- 刺激 Record 只显示当前输入类型对应的设置，不再生成空白或无关正文段落。
+- CELL、DISH、WELL 刺激后以原 Sample 身份登记为输出；PLATE 按刺激分组生成 WELL。
+
 ## 0.1.2 — 2026-08-31
 
 - 所有 Record 正文支持插入 PNG、JPEG、WebP 和 TIFF 图片；原图保存在工作区，SQLite 只保存元数据。
