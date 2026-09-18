@@ -1,5 +1,16 @@
 # LabFlow Changelog
 
+## 0.1.5 — 2026-09-18
+
+- 自建 Protocol 统一为四种 Sample 身份流程：原 Sample 沿用、1→1、1→多和1→0。
+- “输入 Sample 类型”改为“适用的输入类型”，支持单类型、多类型或明确不限类型。
+- 1→1 和1→多在创建 Record 时逐行登记真实输出 Sample，包含来源输入、类型、自定义名称、处理方式、处理时间和其他说明。
+- 输出类型按通用材料分类展开，移除 `OTHER` 兜底和容器类型；新增 `NUCLEI`，保留旧数据兼容。
+- 通用目录不能表达时可登记新的通用 Sample 类型；具体解剖部位使用 `TISSUE` 并写入 Sample 名称或其他信息。
+- 输出清单支持“复用上一行”；首次创建后可选择是否将类型序列保存为该 Protocol 的默认预填。
+- 空白的处理时间不再从父 Sample 元数据自动继承，Record 创建界面支持纵向滚动。
+- Desktop 与 MCP 继续共用同一套 Protocol service、validation 和 transaction。
+
 ## 0.1.4 — 2026-09-16
 
 - 自建 Protocol 编辑器进一步组件化，内置能力与自定义能力使用统一 schema。
