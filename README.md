@@ -79,6 +79,13 @@ Windows: %APPDATA%\LabFlow\
 
 更新或重新安装 App 不会主动覆盖该目录。请通过 LabFlow 的“数据管理”功能迁移或备份工作区，不要直接修改数据库文件。
 
+## 使用文档
+
+- [LabFlow 0.1.5 用户手册](docs/product/user-guide.md)
+- [核心对象、Record 与 Sample Flow 使用指南](docs/product/core-objects-and-sample-flow-guide.md)
+
+详细指南解释 Experiment（Project）、Task、Protocol、Record 和 Sample 的关系，并覆盖 Record 创建流程、输入 Sample 来源、四种 Sample Flow、消耗与谱系、Protocol 字段设置，以及动物取材到 RNA、cDNA、qPCR、Protein 和 WB 的完整示例。
+
 ## 许可
 
 LabFlow 使用 [PolyForm Noncommercial License 1.0.0](LICENSE)。允许个人、教学、学术研究和其他非商业用途；商业使用需要另行授权。
