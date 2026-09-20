@@ -1,5 +1,13 @@
 # LabFlow Changelog
 
+## 0.1.6 — 2026-09-20（仅 macOS）
+
+- **仅更新 Apple Silicon macOS 包**：Windows `Setup.exe`、MSI 和 Windows MCP 状态均维持 0.1.5，未在本次 Release 中重新构建或替换。
+- macOS App 内置 `labflow-mcp` 本地 sidecar；安装到“应用程序”后，可直接注册给 Codex、ChatGPT Desktop、WorkBuddy 或其他支持本地 STDIO 的 MCP 客户端。
+- 新增公开 MCP 安装与使用说明，说明当前可用的 Experiment、Task、Protocol、Record 工具、权限边界和桌面端仍需完成的操作。
+- 日历中修改 Task 名称后，已有 Record 的列表、详情与导出标题会反映当前 Task 名称；冻结的 Record 正文与 Protocol snapshot 保持不变。
+- macOS 打包增加 sidecar 存在性、架构与签名验证；发布包继续不包含任何用户 SQLite、附件、导出或工作区备份。
+
 ## 0.1.5 — 2026-09-18
 
 - 自建 Protocol 统一为四种 Sample 身份流程：原 Sample 沿用、1→1、1→多和1→0。

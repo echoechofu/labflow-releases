@@ -1,6 +1,6 @@
 # LabFlow 核心对象、Record 与 Sample Flow 使用指南
 
-本文适用于 LabFlow 0.1.5，面向第一次使用 LabFlow 的实验人员。它集中解释 Project、Task、Protocol、Record、Sample 的关系，以及创建 Record、选择输入 Sample、生成输出 Sample 和理解样本谱系的方法。
+本文适用于 LabFlow 0.1.6 macOS（Windows 当前公开版本仍为 0.1.5），面向第一次使用 LabFlow 的实验人员。它集中解释 Project、Task、Protocol、Record、Sample 的关系，以及创建 Record、选择输入 Sample、生成输出 Sample 和理解样本谱系的方法。
 
 > 本文描述的是当前版本已经实现的行为。文中会明确区分“数据已经保存”和“桌面端已有查看入口”。
 
