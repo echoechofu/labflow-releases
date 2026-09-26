@@ -1,5 +1,14 @@
 # LabFlow Changelog
 
+## 0.1.7 — 2026-09-26（仅 macOS）
+
+- **仅更新 Apple Silicon macOS 包**：Windows `Setup.exe` 和 MSI 继续维持 0.1.5，本次没有生成或上传 Windows 0.1.7。
+- Experiment 支持改名和隐藏；名称同步到日历、Record、Sample 视图及后续导出，隐藏的 Experiment 不再出现在日历、默认实验列表或新建 Task 选项中。
+- Record 新增集中式“实验文件”区域，统一显示正文图片、普通附件和检测模块原始数据；支持多选、拖放、复制进度、失败重试、重复检测、打开、另存为及插入正文。
+- macOS 版加入 Tauri 应用内更新：启动时发现新版后先确认下载，签名验证通过后再确认安装与重启。
+- 更新包使用独立 updater 签名验证；应用继续使用 ad-hoc 签名且未经过 Apple notarization，首次安装或系统重新评估时仍可能出现 Gatekeeper 提示。
+- 0.1.6 及更早版本没有 updater，需要手动安装一次 0.1.7；从后续版本开始才可接收应用内更新提醒。
+
 ## 0.1.6 — 2026-09-20（仅 macOS）
 
 - **仅更新 Apple Silicon macOS 包**：Windows `Setup.exe`、MSI 和 Windows MCP 状态均维持 0.1.5，未在本次 Release 中重新构建或替换。
