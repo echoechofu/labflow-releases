@@ -4,13 +4,15 @@ LabFlow 是一个面向生物医学湿实验的 local-first 实验管理与电�
 
 ## 下载最新版
 
-当前 macOS 版本：**LabFlow 0.1.6 — 内置 MCP 与 Record 标题同步**
+当前 macOS 版本：**LabFlow 0.1.7 — Experiment 管理、实验文件与应用内更新**
 
 **本次只更新 Apple Silicon macOS 安装包。Windows 安装包没有更新，仍为 0.1.5。** Windows 用户请继续从 v0.1.5 页面下载 `Setup.exe` 或 MSI；不要把 macOS 的 App 或 MCP 文件复制到 Windows 使用。
 
-本次更新将自建 Protocol 的流程定义与实际输出分开：Protocol 强制选择原 Sample 沿用、1→1、1→多或1→0，并可设置一个、多个或任意适用输入类型；具体输出在创建 Record 时逐行填写。
+本次更新允许修改 Experiment 名称并在日历、Record、Sample 和导出中同步显示；Experiment 也可隐藏，隐藏后不会出现在日历、默认实验列表或新建 Task 选项中，数据不会删除。
 
-Record 输出类型按通用材料类别展开，不使用 `OTHER` 兜底；可填写自定义名称、处理方式、处理时间和其他说明，并复用上一行。首次完成后可选择是否将输出类型序列保存为该 Protocol 的默认预填。同时补全 `NUCLEI` 等常用类型，并保持容器与材料类型分离。
+Record 新增“实验文件”区域，可集中查看正文图片、普通附件和检测模块原始数据，支持多选、拖放、复制进度、重复检测、打开、另存为及插入正文。
+
+macOS 0.1.7 首次加入应用内更新组件。以后发现新版时会先询问是否下载，签名验证通过后再次询问是否安装并重启。0.1.6 及更早版本需要手动安装一次 0.1.7。
 
 升级前请先通过旧版“数据管理”导出完整工作区备份，再退出旧版并安装新版。历史 Record 保存既有 Protocol snapshot，不会被新版模板改写。
 
@@ -20,13 +22,13 @@ Record 输出类型按通用材料类别展开，不使用 `OTHER` 兜底；可�
 - [下载 MSI（管理部署）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.5/LabFlow-0.1.5-Windows-x64.msi)
 - [Windows SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.5/SHA256SUMS-Windows-x64.txt)
 
-### Apple Silicon macOS 12+（0.1.6）
+### Apple Silicon macOS 12+（0.1.7）
 
-- [下载 DMG](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.6/LabFlow-0.1.6-Apple-Silicon.dmg)
-- [下载 ZIP](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.6/LabFlow-0.1.6-Apple-Silicon.zip)
-- [macOS SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.6/SHA256SUMS.txt)
+- [下载 DMG](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/LabFlow-0.1.7-Apple-Silicon.dmg)
+- [下载 ZIP](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/LabFlow-0.1.7-Apple-Silicon.zip)
+- [macOS SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/SHA256SUMS-macOS-aarch64.txt)
 
-[打开 v0.1.6 Release 下载页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.6)，可查看 macOS 安装包、更新记录和安装说明。当前没有 Intel Mac 安装包。
+[打开 v0.1.7 Release 下载页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.7)，可查看 macOS 安装包、更新记录和安装说明。当前没有 Intel Mac 安装包。
 
 ## Windows：安装
 
@@ -64,8 +66,8 @@ PowerShell 输出的 `Hash` 应与校验文件中对应 `Setup.exe` 的值完全
 如希望确认安装包与官方发布版本完全一致，可下载 `SHA256SUMS.txt` 并与 DMG 或 ZIP 放在同一目录。以 ZIP 为例，在终端分别执行：
 
 ```bash
-shasum -a 256 LabFlow-0.1.6-Apple-Silicon.zip
-cat SHA256SUMS.txt
+shasum -a 256 LabFlow-0.1.7-Apple-Silicon.zip
+cat SHA256SUMS-macOS-aarch64.txt
 ```
 
 第一条命令输出的 Hash 应与校验文件中对应 ZIP 的值完全一致。如果下载的是 DMG，将第一条命令的文件名换成 DMG 文件名。跳过此步骤不会影响安装。
@@ -85,7 +87,7 @@ Windows: %APPDATA%\LabFlow\
 
 - [LabFlow 0.1.5 用户手册](docs/product/user-guide.md)
 - [核心对象、Record 与 Sample Flow 使用指南](docs/product/core-objects-and-sample-flow-guide.md)
-- [MCP 安装与使用指南（macOS 0.1.6）](docs/product/mcp-user-guide.md)
+- [MCP 安装与使用指南（macOS 0.1.7 内置 sidecar）](docs/product/mcp-user-guide.md)
 
 详细指南解释 Experiment（Project）、Task、Protocol、Record 和 Sample 的关系，并覆盖 Record 创建流程、输入 Sample 来源、四种 Sample Flow、消耗与谱系、Protocol 字段设置，以及动物取材到 RNA、cDNA、qPCR、Protein 和 WB 的完整示例。
 
