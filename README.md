@@ -4,23 +4,20 @@ LabFlow 是一个面向生物医学湿实验的 local-first 实验管理与电�
 
 ## 下载最新版
 
-当前 macOS 版本：**LabFlow 0.1.7 — Experiment 管理、实验文件与应用内更新**
-
-**本次只更新 Apple Silicon macOS 安装包。Windows 安装包没有更新，仍为 0.1.5。** Windows 用户请继续从 v0.1.5 页面下载 `Setup.exe` 或 MSI；不要把 macOS 的 App 或 MCP 文件复制到 Windows 使用。
+当前 macOS / Windows 版本：**LabFlow 0.1.7 — Experiment 管理、实验文件与跨平台更新**
 
 本次更新允许修改 Experiment 名称并在日历、Record、Sample 和导出中同步显示；Experiment 也可隐藏，隐藏后不会出现在日历、默认实验列表或新建 Task 选项中，数据不会删除。
 
 Record 新增“实验文件”区域，可集中查看正文图片、普通附件和检测模块原始数据，支持多选、拖放、复制进度、重复检测、打开、另存为及插入正文。
 
-macOS 0.1.7 首次加入应用内更新组件。以后发现新版时会先询问是否下载，签名验证通过后再次询问是否安装并重启。0.1.6 及更早版本需要手动安装一次 0.1.7。
+macOS 与 Windows 0.1.7 均加入应用内更新组件。以后发现新版时会先询问是否下载，签名验证通过后再次询问是否安装并重启。macOS 0.1.6 及更早版本、Windows 0.1.5 及更早版本需要手动安装一次 0.1.7。
 
 升级前请先通过旧版“数据管理”导出完整工作区备份，再退出旧版并安装新版。历史 Record 保存既有 Protocol snapshot，不会被新版模板改写。
 
-### Windows 10/11 x64（仍为 0.1.5，未更新）
+### Windows 10/11 x64（0.1.7）
 
-- [下载 Setup.exe（普通用户推荐）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.5/LabFlow-0.1.5-Windows-x64-Setup.exe)
-- [下载 MSI（管理部署）](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.5/LabFlow-0.1.5-Windows-x64.msi)
-- [Windows SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.5/SHA256SUMS-Windows-x64.txt)
+- [下载 Setup.exe](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/LabFlow-0.1.7-Windows-x64-Setup.exe)
+- [Windows SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/SHA256SUMS-Windows-x64.txt)
 
 ### Apple Silicon macOS 12+（0.1.7）
 
@@ -28,7 +25,7 @@ macOS 0.1.7 首次加入应用内更新组件。以后发现新版时会先询�
 - [下载 ZIP](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/LabFlow-0.1.7-Apple-Silicon.zip)
 - [macOS SHA-256 校验文件](https://github.com/echoechofu/labflow-releases/releases/download/v0.1.7/SHA256SUMS-macOS-aarch64.txt)
 
-[打开 v0.1.7 Release 下载页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.7)，可查看 macOS 安装包、更新记录和安装说明。当前没有 Intel Mac 安装包。
+[打开 v0.1.7 Release 下载页面](https://github.com/echoechofu/labflow-releases/releases/tag/v0.1.7)，可查看 macOS / Windows 安装包、更新记录和安装说明。当前没有 Intel Mac 安装包。
 
 ## Windows：安装
 
@@ -46,7 +43,7 @@ macOS 0.1.7 首次加入应用内更新组件。以后发现新版时会先询�
 如希望确认安装包与官方发布版本完全一致，可额外下载 `SHA256SUMS-Windows-x64.txt`，与 `Setup.exe` 放在同一目录后，在 PowerShell 分别执行：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\LabFlow-0.1.5-Windows-x64-Setup.exe
+Get-FileHash -Algorithm SHA256 .\LabFlow-0.1.7-Windows-x64-Setup.exe
 Get-Content .\SHA256SUMS-Windows-x64.txt
 ```
 
@@ -85,9 +82,9 @@ Windows: %APPDATA%\LabFlow\
 
 ## 使用文档
 
-- [LabFlow 0.1.5 用户手册](docs/product/user-guide.md)
+- [LabFlow 0.1.7 用户手册](docs/product/user-guide.md)
 - [核心对象、Record 与 Sample Flow 使用指南](docs/product/core-objects-and-sample-flow-guide.md)
-- [MCP 安装与使用指南（macOS 0.1.7 内置 sidecar）](docs/product/mcp-user-guide.md)
+- [MCP 安装与使用指南（macOS / Windows 0.1.7 均内置 sidecar）](docs/product/mcp-user-guide.md)
 
 详细指南解释 Experiment（Project）、Task、Protocol、Record 和 Sample 的关系，并覆盖 Record 创建流程、输入 Sample 来源、四种 Sample Flow、消耗与谱系、Protocol 字段设置，以及动物取材到 RNA、cDNA、qPCR、Protein 和 WB 的完整示例。
 

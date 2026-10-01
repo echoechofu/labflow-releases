@@ -1,15 +1,19 @@
 # LabFlow 用户手册
 
-本手册适用于 **LabFlow 测试版**，重点说明日常使用、自建 Protocol，以及实验已经进行到中途时如何开始使用 LabFlow。当前 macOS 最新版本为 **0.1.6**；Windows 安装包本次未更新，仍为 **0.1.5**。关于 Project、Task、Protocol、Record、Sample 的完整关系和 Sample Flow 示例，请阅读[核心对象、Record 与 Sample Flow 使用指南](core-objects-and-sample-flow-guide.md)；需要连接 Codex、ChatGPT 桌面应用或其他 Agent 时，请阅读 [MCP 安装与使用指南](mcp-user-guide.md)。
+本手册适用于 **LabFlow 0.1.7 测试版**，重点说明日常使用、自建 Protocol，以及实验已经进行到中途时如何开始使用 LabFlow。macOS 与 Windows 均已更新到 0.1.7，并支持从公开 GitHub Release 检查后续更新。关于 Project、Task、Protocol、Record、Sample 的完整关系和 Sample Flow 示例，请阅读[核心对象、Record 与 Sample Flow 使用指南](core-objects-and-sample-flow-guide.md)；需要连接 Codex、ChatGPT 桌面应用或其他 Agent 时，请阅读 [MCP 安装与使用指南](mcp-user-guide.md)。
 
 ## 1. 安装与数据位置
 
 从公开的 [LabFlow Downloads](https://github.com/echoechofu/labflow-releases/releases/latest) 下载与系统匹配的最新版文件：
 
-- Apple Silicon macOS 12+：下载 `LabFlow 0.1.6` 中包含 `Apple-Silicon` 的 ZIP 或 DMG；
-- Windows 10/11 x64：本次未更新，继续使用 `LabFlow 0.1.5` 中包含 `Windows-x64-Setup` 的 EXE。
+- Apple Silicon macOS 12+：下载包含 `Apple-Silicon` 的 ZIP 或 DMG；
+- Windows 10/11 x64：下载 0.1.7 中包含 `Windows-x64-Setup` 的 EXE。
 
-如希望确认安装包与 Release 中发布的文件完全一致，可以同时下载 `SHA256SUMS.txt`：对 ZIP 或 DMG 执行 `shasum -a 256 <文件名>`，再用 `cat SHA256SUMS.txt` 查看官方值。两处 Hash 应完全一致；这是可选的完整性校验，不是安装的强制步骤。当前版本尚未经过 Apple Developer ID 签名和公证；解压并将 `LabFlow.app` 拖入“应用程序”后，先尝试打开一次。若被拦截，请打开“系统设置”→“隐私与安全性”，在“安全性”区域点击 `LabFlow was blocked to protect your Mac` 旁的“仍要打开”（Open Anyway），再在确认窗口中点击“打开”。
+如希望确认安装包与 Release 中发布的文件完全一致，可以同时下载 `SHA256SUMS.txt`：对 ZIP 或 DMG 执行 `shasum -a 256 <文件名>`，再用 `cat SHA256SUMS.txt` 查看官方值。两处 Hash 应完全一致；这是可选的完整性校验，不是安装的强制步骤。当前版本尚未经过 Apple Developer ID 签名和公证；解压并将 `LabFlow.app` 拖入“应用程序”后，先尝试打开一次。若被拦截，请打开“系统设置”→“隐私与安全性”，在“安全性”区域点击 `LabFlow was blocked to protect your Mac` 旁的“仍要打开”（Open Anyway），再在确认窗口中点击“打开”。应用内更新包会经过独立的 updater 签名验证，但这不等于 Apple 公证；系统再次评估应用时仍可能要求手动允许打开。
+
+### 1.1 应用内更新
+
+macOS 和 Windows 0.1.7 启动时会检查公开 GitHub Release。发现更高版本时，系统原生窗口会先询问是否下载；下载完成并验证签名后，会再次询问是否安装并重启。拒绝不会删除数据，也不会在后台强制安装，下次启动仍可再次选择。macOS 0.1.6 及更早版本、Windows 0.1.5 及更早版本没有更新组件，需要先手动安装一次 0.1.7；之后才能使用应用内更新。
 
 Windows MVP 当前没有 Authenticode 签名。可按需核对 SHA-256，然后按 [Windows 安装与 SmartScreen 说明](windows-install.md)安装。
 
@@ -60,6 +64,8 @@ Task 的上级关系表达实验安排或工作流依赖；实际使用了什么
 5. 点击“保存任务”。
 
 上级 Task 是可选的。没有上级 Task 的 Task 仍然可以使用已有 Sample 或登记外部 Sample。
+
+Experiment 名称和可见性可在“实验”页进入对应 Experiment 后编辑。改名会同步到日历、Record、样本视图和后续导出；隐藏会让该 Experiment 及其 Task 从日历和默认实验列表消失，也不会再出现在新建 Task 的 Experiment 选项中。数据不会被删除。需要恢复时，点击实验列表右上角的“管理隐藏项”，打开对应 Experiment 并取消隐藏。
 
 ### 3.2 从 Task 创建 Record
 
@@ -300,7 +306,17 @@ Procedure:
 
 进入“Records”，按 Task 实验日期找到记录并打开。点击“修改正文”可以编辑当前 Record 的实验正文；修改不会改变 Protocol 或其他 Record。
 
-编辑时可将光标放在需要的位置，点击“在光标处插入图片”，选择 PNG、JPEG、WebP 或 TIFF。LabFlow 会立即保存当前正文，把原图复制到本工作区，并在正文中显示预览；大尺寸图片和 TIFF 会另外生成最长边不超过 1448 px 的 8 位 RGBA PNG 预览，原图不会被压缩或覆盖。新生成预览的解码像素缓冲区不超过 8 MiB（原 2048 px 方案约为 16 MiB）；这不是整个应用的内存上限，不包含生成预览时解码原图、浏览器缓存和 GPU 副本等开销。已有预览不会自动重新生成。Record 列表不加载图片，打开正文后图片进入可见区域时才加载。
+记录页顶部的“正文 / 实验文件”可快速定位；日历任务详情显示记录状态与文件数量，点击“查看实验文件”可直接进入文件区域。
+
+### 实验文件
+
+“实验文件”集中列出当前 Record 的全部附件，包括正文图片、普通附件和检测模块导入的原始数据。列表显示文件名、格式、大小与引用/导入来源，同一附件只列一次。
+
+点击“添加文件”可多选，也可从系统文件管理器将文件拖到实验文件区域。LabFlow 将原件复制到工作区，逐个显示复制进度和结果；失败项可重试。同名但内容不同的文件分别保存，本次记录中已有相同内容的文件会提示重复。归档不修改正文；成功导入的文件不会因取消正文编辑而撤销。
+
+PNG、JPEG、WebP、TIFF 可生成最长边不超过 1448 px 的 PNG 预览，并保留原图。无法生成预览时仍保留原文件，可用“打开”交给系统应用，或“另存为”导出副本。已有图片预览继续使用原有资源限制。
+
+需要在正文中说明某个文件时，点击文件旁的“插入正文”：图片有预览时插入图片引用，其他文件插入附件引用。引用加入当前正文草稿，点击“保存正文”后生效；点击“取消”只放弃正文修改。已有正文草稿会保留，不因新增附件而自动保存。
 
 ### 删除 Record
 
